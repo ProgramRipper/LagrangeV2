@@ -12,11 +12,13 @@ using LgrEvents = Lagrange.Core.Events.EventArgs;
 
 namespace Lagrange.Milky.Event;
 
-public class EventService(ILogger<EventService> logger, IOptions<MilkyConfiguration> options, BotContext bot, EntityConvert convert) : IHostedService
+public class EventService(ILogger<EventService> logger, IOptions<MilkyConfiguration> options, IHost host, BotContext bot, EntityConvert convert) : IHostedService
 {
     private readonly ILogger<EventService> _logger = logger;
 
     private readonly bool _ignoreBotMessage = options.Value.Message.IgnoreBotMessage;
+
+    private readonly IHost _host = host;
 
     private readonly BotContext _bot = bot;
     private readonly EntityConvert _convert = convert;
@@ -55,6 +57,8 @@ public class EventService(ILogger<EventService> logger, IOptions<MilkyConfigurat
         {
             _logger.LogHandleEventException(nameof(LgrEvents.BotOfflineEvent), e);
         }
+
+        _host.StopAsync().ContinueWith(_ => Environment.Exit(1));
     }
 
     private void HandleMessageEvent(BotContext bot, LgrEvents.BotMessageEvent @event)
