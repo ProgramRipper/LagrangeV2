@@ -37,6 +37,8 @@ public class CoreLoginService(ILogger<CoreLoginService> logger, IOptions<CoreCon
         uint uin = _configuration.Login.Uin ?? 0;
         string password = _configuration.Login.Password ?? string.Empty;
         bool result = await _bot.Login(uin, password, token);
+        if (File.Exists("qrcode.png"))
+            File.Delete("qrcode.png");
         if (!result)
         {
             _logger.LogLoginFailed();
