@@ -40,6 +40,11 @@ public class CoreLoginService(ILogger<CoreLoginService> logger, IOptions<CoreCon
         if (!result)
         {
             _logger.LogLoginFailed();
+
+            var path = $"{uin}.keystore";
+            if (File.Exists(path))
+                File.Delete(path);
+
             _ = _host.StopAsync(CancellationToken.None);
         }
         _logger.LogLoginSuccessful(_bot.BotUin, _bot.Config.Protocol, _bot.AppInfo.CurrentVersion);
