@@ -28,21 +28,22 @@ public class OnlineCaptchaResolver(ILogger<OnlineCaptchaResolver> logger, IOptio
         {
             token.ThrowIfCancellationRequested();
 
-            string queryUrl = string.Format(QueryUrl, _bot.BotUin);
-            var response = await _client.GetAsync(queryUrl, token);
-            if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                _logger.LogCaptchaWaiting();
-                continue;
-            }
+            // string queryUrl = string.Format(QueryUrl, _bot.BotUin);
+            // var response = await _client.GetAsync(queryUrl, token);
+            // if (response.StatusCode == HttpStatusCode.NotFound)
+            // {
+            //     _logger.LogCaptchaWaiting();
+            //     continue;
+            // }
 
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new Exception($"Unexpected http status code({response.StatusCode})");
-            }
+            // if (!response.IsSuccessStatusCode)
+            // {
+            //     throw new Exception($"Unexpected http status code({response.StatusCode})");
+            // }
 
-            string result = await response.Content.ReadAsStringAsync(token);
-            string? json = JsonNode.Parse(result)?["data"]?.GetValue<string>();
+            // string result = await response.Content.ReadAsStringAsync(token);
+            // string? json = JsonNode.Parse(result)?["data"]?.GetValue<string>();
+            var json = await Console.In.ReadLineAsync(token);
             if (json == null) continue;
 
             return (json.Split('|')[0], json.Split('|')[1]);

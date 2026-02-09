@@ -20,9 +20,6 @@
             // Signer Base URL
             "Base": "https://sign.lagrangecore.org/api/sign",
 
-            // Signer version
-            "Version": "30366",
-
             // Signer token
             // "Token": null
 
@@ -34,7 +31,7 @@
             // Account uin
             // If the Uin is inconsistent with the actual login account, quick login will not be possible
             "Uin": 0,
-            
+
             // Account password
             // Set to null to login via QrCode
             // "Password": null,

@@ -114,107 +114,147 @@ internal partial class TransElem
 [ProtoPackable]
 internal partial class CustomFace
 {
-    [ProtoMember(1)] public byte[] Guid { get; set; }
-    
-    [ProtoMember(2)] public string FilePath { get; set; }
-    
-    [ProtoMember(3)] public string Shortcut { get; set; }
-    
-    [ProtoMember(4)] public byte[] Buffer { get; set; }
-    
-    [ProtoMember(5)] public byte[] Flag { get; set; }
-    
-    [ProtoMember(6)] public byte[]? OldData { get; set; }
-    
-    [ProtoMember(7)] public uint FileId { get; set; }
-    
-    [ProtoMember(8)] public int? ServerIp { get; set; }
-    
-    [ProtoMember(9)] public int? ServerPort { get; set; }
-    
-    [ProtoMember(10)] public int FileType { get; set; }
-    
-    [ProtoMember(11)] public byte[] Signature { get; set; }
-    
-    [ProtoMember(12)] public int Useful { get; set; }
-    
-    [ProtoMember(13)] public byte[] Md5 { get; set; }
-    
+    [ProtoMember(1)] public string FileMd5Hex { get; set; }      // MD5 十六进制字符串
+
+    [ProtoMember(2)] public uint FileSize { get; set; }          // 文件大小
+
+    [ProtoMember(3)] public string DownloadToken { get; set; }   // 下载 Token
+
+    [ProtoMember(4)] public byte[] Unknown4 { get; set; }
+
+    [ProtoMember(5)] public uint Unknown5 { get; set; }          // 标志位
+
+    [ProtoMember(6)] public byte[] Unknown6 { get; set; }
+
+    [ProtoMember(7)] public byte[] FileMd5 { get; set; }         // MD5 二进制
+
+    [ProtoMember(8)] public uint Height { get; set; }            // 图片高度
+
+    [ProtoMember(9)] public uint Width { get; set; }             // 图片宽度
+
+    [ProtoMember(10)] public string FileId { get; set; }         // 文件 ID
+
+    [ProtoMember(11)] public byte[] Unknown11 { get; set; }
+
+    [ProtoMember(12)] public int Unknown12 { get; set; }
+
+    [ProtoMember(13)] public uint Unknown13 { get; set; }
+
     [ProtoMember(14)] public string ThumbUrl { get; set; }
-    
+
     [ProtoMember(15)] public string BigUrl { get; set; }
-    
+
     [ProtoMember(16)] public string OrigUrl { get; set; }
-    
+
     [ProtoMember(17)] public int BizType { get; set; }
-    
-    [ProtoMember(18)] public int RepeatIndex { get; set; }
-    
-    [ProtoMember(19)] public int RepeatImage { get; set; }
-    
+
+    [ProtoMember(18)] public int Unknown18 { get; set; }
+
+    [ProtoMember(19)] public int Unknown19 { get; set; }
+
     [ProtoMember(20)] public int ImageType { get; set; }
-    
-    [ProtoMember(21)] public int Index { get; set; }
-    
-    [ProtoMember(22)] public int Width { get; set; }
-    
-    [ProtoMember(23)] public int Height { get; set; }
-    
-    [ProtoMember(24)] public int Source { get; set; }
-    
-    [ProtoMember(25)] public uint Size { get; set; }
-    
-    [ProtoMember(26)] public int Origin { get; set; }
-    
-    [ProtoMember(27)] public int? ThumbWidth { get; set; }
-    
-    [ProtoMember(28)] public int? ThumbHeight { get; set; }
-    
-    [ProtoMember(29)] public int ShowLen { get; set; }
-    
-    [ProtoMember(30)] public int DownloadLen { get; set; }
-    
-    [ProtoMember(31)] public string? X400Url { get; set; }
-    
-    [ProtoMember(32)] public int X400Width { get; set; }
-    
-    [ProtoMember(33)] public int X400Height { get; set; }
-    
-    [ProtoMember(34)] public PbReserve1? PbReserve { get; set; }
 
-    [ProtoPackable]
-    public partial class PbReserve1
-    {
-        [ProtoMember(1)] public int SubType { get; set; }
+    [ProtoMember(21)] public int Unknown21 { get; set; }
 
-        [ProtoMember(3)] public int Field3 { get; set; }
+    [ProtoMember(22)] public int Unknown22 { get; set; }
 
-        [ProtoMember(4)] public int Field4 { get; set; }
+    [ProtoMember(23)] public uint Unknown23 { get; set; }        // 与 FileId 相同的 ID
 
-        [ProtoMember(9)] public string Summary { get; set; }
+    [ProtoMember(24)] public int Unknown24 { get; set; }
 
-        [ProtoMember(10)] public int Field10 { get; set; }
+    [ProtoMember(25)] public uint Unknown25 { get; set; }
 
-        [ProtoMember(21)] public PbReserve2 Field21 { get; set; }
+    [ProtoMember(26)] public int Unknown26 { get; set; }
 
-        [ProtoMember(31)] public string Field31 { get; set; }
-    }
+    [ProtoMember(27)] public int Unknown27 { get; set; }
 
-    [ProtoPackable]
-    public partial class PbReserve2
-    {
-        [ProtoMember(1)] public int Field1 { get; set; }
+    [ProtoMember(28)] public int Unknown28 { get; set; }
 
-        [ProtoMember(2)] public string Field2 { get; set; }
+    [ProtoMember(29)] public CustomFacePbReserve? PbReserve { get; set; }  // 扩展信息 (含 rkey)
 
-        [ProtoMember(3)] public int Field3 { get; set; }
+    [ProtoMember(30)] public int Unknown30 { get; set; }
 
-        [ProtoMember(4)] public int Field4 { get; set; }
+    [ProtoMember(31)] public string Unknown31 { get; set; }
 
-        [ProtoMember(5)] public int Field5 { get; set; }
+    [ProtoMember(32)] public int Unknown32 { get; set; }
 
-        [ProtoMember(7)] public string Md5Str { get; set; }
-    }
+    [ProtoMember(33)] public int Unknown33 { get; set; }
+
+    [ProtoMember(34)] public CustomFaceOldPbReserve? OldPbReserve { get; set; }
+}
+
+[ProtoPackable]
+internal partial class CustomFacePbReserve
+{
+    [ProtoMember(1)] public int Unknown1 { get; set; }
+
+    [ProtoMember(3)] public int Unknown3 { get; set; }
+
+    [ProtoMember(4)] public int Unknown4 { get; set; }
+
+    [ProtoMember(9)] public string Unknown9 { get; set; }
+
+    [ProtoMember(10)] public int Unknown10 { get; set; }
+
+    [ProtoMember(12)] public string Unknown12 { get; set; }
+
+    [ProtoMember(18)] public string Unknown18 { get; set; }
+
+    [ProtoMember(19)] public string Unknown19 { get; set; }
+
+    [ProtoMember(21)] public CustomFacePbReserveInner? Inner { get; set; }
+
+    [ProtoMember(30)] public string Rkey { get; set; }           // 下载密钥
+}
+
+[ProtoPackable]
+internal partial class CustomFacePbReserveInner
+{
+    [ProtoMember(1)] public int Unknown1 { get; set; }
+
+    [ProtoMember(2)] public string Unknown2 { get; set; }
+
+    [ProtoMember(3)] public int Unknown3 { get; set; }
+
+    [ProtoMember(4)] public int Unknown4 { get; set; }
+
+    [ProtoMember(5)] public int Unknown5 { get; set; }
+
+    [ProtoMember(7)] public string Unknown7 { get; set; }
+}
+
+[ProtoPackable]
+internal partial class CustomFaceOldPbReserve
+{
+    [ProtoMember(1)] public int SubType { get; set; }
+
+    [ProtoMember(3)] public int Field3 { get; set; }
+
+    [ProtoMember(4)] public int Field4 { get; set; }
+
+    [ProtoMember(9)] public string Summary { get; set; }
+
+    [ProtoMember(10)] public int Field10 { get; set; }
+
+    [ProtoMember(21)] public CustomFaceOldPbReserve2 Field21 { get; set; }
+
+    [ProtoMember(31)] public string Field31 { get; set; }
+}
+
+[ProtoPackable]
+internal partial class CustomFaceOldPbReserve2
+{
+    [ProtoMember(1)] public int Field1 { get; set; }
+
+    [ProtoMember(2)] public string Field2 { get; set; }
+
+    [ProtoMember(3)] public int Field3 { get; set; }
+
+    [ProtoMember(4)] public int Field4 { get; set; }
+
+    [ProtoMember(5)] public int Field5 { get; set; }
+
+    [ProtoMember(7)] public string Md5Str { get; set; }
 }
 
 [ProtoPackable]

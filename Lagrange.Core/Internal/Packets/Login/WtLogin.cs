@@ -173,7 +173,7 @@ internal class WtLogin : StructBase
         tlvs.Tlv001();
         tlvs.Tlv106Pwd(password);
         tlvs.Tlv116();
-        tlvs.Tlv100Android((uint)AppInfo.SdkInfo.MainSigMap);
+        tlvs.Tlv100Android(16724722);
         tlvs.Tlv107Android();
         tlvs.Tlv142();
         tlvs.Tlv144Report(false);
