@@ -29,6 +29,7 @@ public static partial class JsonUtility
     [JsonSerializable(typeof(AndroidDebugXwidRequest))]
     [JsonSerializable(typeof(AndroidSignerResponse<AndroidSecSignResponseData>))]
     [JsonSerializable(typeof(AndroidSignerResponse<string>))]
+    [JsonSerializable(typeof(AndroidSignerResponse<BotAppInfo>))]
 
     // === api ===
     [JsonSerializable(typeof(ApiOkResult))]
